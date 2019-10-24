@@ -49,24 +49,27 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
     <script>
-      function go() {
-        document.getElementById('iframe').setAttribute('src', document.getElementById('url-input').value);
-      }
-
       var secondsAfterLanding = 0;
 
-      function onLandingPageLoad() {
+      function go() {
+        document.getElementById('iframe').setAttribute('src', document.getElementById('url-input').value);
+
         secondsAfterLanding = 0;
         document.getElementById("landing-widget").style.display = "block";
         document.getElementById('landing-timer').innerHTML = secondsAfterLanding + "";
-        window.setTimeout(landingTimerTicked, 1000);
+      }
+
+      function onLandingPageLoad() {
+        if (secondsAfterLanding < 5) {
+          window.setTimeout(landingTimerTicked, 1000);
+        }
       };
 
       function landingTimerTicked() {
         secondsAfterLanding += 1;
         document.getElementById('landing-timer').innerHTML = secondsAfterLanding + "";
 
-        if (secondsAfterLanding >= 5) {
+        if (secondsAfterLanding == 5) {
           alert("Landing point rewarded!");
           document.getElementById("landing-widget").style.display = "none";
         } else {
