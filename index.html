@@ -57,6 +57,8 @@
 
       function onLandingPageLoad() {
         secondsAfterLanding = 0;
+        document.getElementById("landing-widget").style.display = "block";
+        document.getElementById('landing-timer').innerHTML = secondsAfterLanding + "";
         window.setTimeout(landingTimerTicked, 1000);
       };
 
@@ -66,7 +68,7 @@
 
         if (secondsAfterLanding >= 5) {
           alert("Landing point rewarded!");
-          document.getElementById("landing-widget").remove();
+          document.getElementById("landing-widget").style.display = "none";
         } else {
           window.setTimeout(landingTimerTicked, 1000);
         }
