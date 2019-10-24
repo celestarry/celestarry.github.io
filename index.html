@@ -44,13 +44,19 @@
       }
     </style>
 
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
     <script>
       function go() {
         document.getElementById('iframe').setAttribute('src', document.getElementById('url-input').value);
       }
 
       var secondsAfterLanding = 0;
+
       function onLandingPageLoad() {
+        secondsAfterLanding = 0;
         window.setTimeout(landingTimerTicked, 1000);
       };
 
@@ -65,6 +71,7 @@
           window.setTimeout(landingTimerTicked, 1000);
         }
       }
+});
     </script>
   </head>
   <body>
